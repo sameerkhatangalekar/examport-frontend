@@ -1,0 +1,117 @@
+{{questionId}}
+
+<div class="bootstrap-wrapper">
+  <div class="row">
+    <div class="col-md-12">
+      <mat-card>
+        <mat-card-header>
+          <mat-card-subtitle>
+            Enter the details of new question
+          </mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+          <form *ngIf="questionUpdateData" class="mt20" (ngSubmit)="updateQuestionData()">
+            <!-- question content field -->
+            <mat-form-field class="w100" appearance="fill">
+              <mat-label>Enter details of question</mat-label>
+              <textarea
+                required
+                [(ngModel)]="questionUpdateData.content"
+                name="content"
+                matInput
+                rows="5"
+              ></textarea>
+            </mat-form-field>
+            <!-- options -->
+            <div class="row">
+              <div class="col-md-6">
+                <!-- option1 -->
+                <mat-form-field class="w100" appearance="fill">
+                  <mat-label> Enter option 1 </mat-label>
+                  <input
+                    required
+                    [(ngModel)]="questionUpdateData.option1"
+                    name="option1"
+                    type="text"
+                    matInput
+                  />
+                </mat-form-field>
+              </div>
+              <div class="col-md-6">
+                <!-- option2 -->
+                <mat-form-field class="w100" appearance="fill">
+                  <mat-label> Enter option 2 </mat-label>
+                  <input
+                    required
+                    [(ngModel)]="questionUpdateData.option2"
+                    name="option2"
+                    type="text"
+                    matInput
+                  />
+                </mat-form-field>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6">
+                <!-- option3 -->
+                <mat-form-field class="w100" appearance="fill">
+                  <mat-label> Enter option 3 </mat-label>
+                  <input
+                    [(ngModel)]="questionUpdateData.option3"
+                    name="option3"
+                    type="text"
+                    matInput
+                  />
+                </mat-form-field>
+              </div>
+              <div class="col-md-6">
+                <!-- option4 -->
+                <mat-form-field class="w100" appearance="fill">
+                  <mat-label> Enter option 4 </mat-label>
+                  <input
+                    [(ngModel)]="questionUpdateData.option4"
+                    name="option4"
+                    type="text"
+                    matInput
+                  />
+                </mat-form-field>
+              </div>
+            </div>
+            <!-- answer -->
+            <mat-form-field appearance="fill">
+              <mat-label>Select Answer</mat-label>
+              <mat-select required [(ngModel)]="questionUpdateData.answer" name="answer">
+                <mat-option
+                  *ngIf="questionUpdateData.option1"
+                  [value]="questionUpdateData.option1"
+                  >{{ questionUpdateData.option1 }}</mat-option
+                >
+                <mat-option
+                  *ngIf="questionUpdateData.option2"
+                  [value]="questionUpdateData.option2"
+                  >{{ questionUpdateData.option2 }}</mat-option
+                >
+                <mat-option
+                  *ngIf="questionUpdateData.option3"
+                  [value]="questionUpdateData.option3"
+                  >{{ questionUpdateData.option3 }}</mat-option
+                >
+                <mat-option
+                  *ngIf="questionUpdateData.option4"
+                  [value]="questionUpdateData.option4"
+                  >{{ questionUpdateData.option4 }}</mat-option
+                >
+              </mat-select>
+            </mat-form-field>
+            <div class="container text-center">
+              <button mat-raised-button color="warn" type="submit">
+                Update
+              </button>
+            </div>
+          </form>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+</div>
+

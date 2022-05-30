@@ -1,0 +1,64 @@
+<mat-card class="mt20" *ngFor="let qData of quizzesData">
+
+  <mat-card-header class="mt10">
+    <div mat-card-avatar class="example-header-image"></div>
+    <mat-card-title>
+      {{ qData.title }}
+    </mat-card-title>
+    <mat-card-subtitle>
+      {{ qData.category.title }}
+    </mat-card-subtitle>
+
+  </mat-card-header>
+  <mat-card-content class="ml20">
+    <p>
+      {{ qData.description }}
+    </p>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-flat-button class="ml20 mt10" color="accent" [routerLink]="'/admin/view-questions/'+qData.qId+'/'+qData.title">Questions</button>
+    <button mat-stroked-button class="ml20 mt10" color="accent">
+      Max Marks : {{ qData.maxMarks }}
+    </button>
+    <button mat-stroked-button class="ml20 mt10" color="accent">
+      Number Of Questions : {{ qData.numberOfQuestions }}
+    </button>
+    <button
+      [routerLink]="'/admin/update-quiz/' + qData.qId"
+      mat-flat-button
+      class="ml20 mt10"
+      color="accent"
+    >
+      Update
+    </button>
+    <button mat-flat-button class="ml20 mt10" color="accent">
+      Quiz Attempts
+    </button>
+    <button
+      mat-flat-button
+      class="ml20 mt10"
+      color="warn"
+      (click)="deleteQuiz(qData.qId, qData.title)"
+    >
+      Delete
+    </button>
+  </mat-card-actions>
+</mat-card>
+<div class="container text-center mt20">
+  <button routerLink="/admin/add-quiz" mat-raised-button color="accent">
+    Add New Quiz
+  </button>
+</div>
+
+
+
+<!-- Active or not status -->
+<!-- <div>
+
+  <button
+    mat-fab
+    [ngStyle]="{ 'background-color': qData.active ? 'green' : 'red' }"
+  >
+    <mat-icon *ngIf="qData.active? 'check_circle_outline' : ''"> </mat-icon>
+  </button>
+</div> -->
